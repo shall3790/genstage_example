@@ -9,9 +9,11 @@ defmodule GenstageExample.Application do
     children = [
       # Starts a worker by calling: GenstageExample.Worker.start_link(arg)
       # {GenstageExample.Worker, arg}
-      {GenstageExample.Producer, 0},
+      # {GenstageExample.Producer, 0},
+      # {GenstageExample.Broadcaster, 0},
+      {GenstageExample.QueueBroadcaster, 0},
       {GenstageExample.ProducerConsumer, []},
-      {GenstageExample.Consumer, []}
+      {GenstageExample.ConsumerSup, []}
     ]
 
 

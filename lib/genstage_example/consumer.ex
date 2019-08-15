@@ -1,8 +1,8 @@
 defmodule GenstageExample.Consumer do
   use GenStage
-
+  require Logger
   def start_link(number) do
-    GenStage.start_link(__MODULE__, number)
+    GenStage.start_link(__MODULE__, number, name: __MODULE__)
   end
 
   def init(state) do
@@ -10,6 +10,7 @@ defmodule GenstageExample.Consumer do
   end
 
   def handle_events(events, _from, state) do
+    Logger.debug("### Consumer ###")
     for event <- events do
       IO.inspect({self(), event, state})
     end
